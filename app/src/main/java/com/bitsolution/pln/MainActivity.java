@@ -1,49 +1,25 @@
 package com.bitsolution.pln;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 
 import com.bitsolution.pln.Helpers.AppConfig;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
-
-    private int intervalInMinutes = 1;
-    private AlarmManager alarmManager;
-    private Intent gpsTrackerIntent;
-    private PendingIntent pendingIntent;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @RequiresApi(api = Build.VERSION_CODES.N)
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-
-    };
+    private String TAG = getClass().getSimpleName();
+    Toolbar toolbar;
+    CollapsingToolbarLayout collapsingToolbarLayoutAndroid;
+    CoordinatorLayout rootLayoutAndroid;
+    GridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +27,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         AppConfig.JAGA_SERVICES(getBaseContext());
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        gridView = (GridView)findViewById(R.id.grid);
+        gridView.setAdapter(new CaterAdapter(this, AppConfig.gridViewStrings(), AppConfig.gridViewImages()));
+        Log.d(TAG, "onCreate: " + AppConfig.isConnected(this)); //network checking
+
+        initInstances();
+    }
+
+    private void initInstances() {
+        rootLayoutAndroid = (CoordinatorLayout)findViewById(R.id.android_coordinator_layout);
+        collapsingToolbarLayoutAndroid = (CollapsingToolbarLayout)findViewById(R.id.collapsing_toolbar_android_layout);
+        collapsingToolbarLayoutAndroid.setTitle("Rainbow Sistem");
+
+        CaterAdapter adapter = new CaterAdapter(MainActivity.this, AppConfig.gridViewStrings(), AppConfig.gridViewImages());
+        gridView = (GridView)findViewById(R.id.grid);
+        gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(MainActivity.this, "You Clicked at " +AppConfig.gridViewStrings()[+ position], Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 }

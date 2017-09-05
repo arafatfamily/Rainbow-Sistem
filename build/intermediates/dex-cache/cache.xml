@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\GILBERT\.android\build-cache\30c074fd606f88722b821d98a48372cc6fd02b4e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="ee17feb34ce104bc17d1a1e64346d7f779ebb066">
+        <dex dex="O:\AndroidProject\RainbowSistem\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9086c64ab6e3c2215694c67dde216de2f0decf43\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\GILBERT\.android\build-cache\1ae6e65912ac463f347fe835d1f6993a7288ab17\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="bc853652fcf47d99e37ab1362c228d1ef90a2a1f">
+        <dex dex="O:\AndroidProject\RainbowSistem\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d6b557660cae7a8590427fc7bcd21327b558bc93\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="O:\AndroidProject\RainbowSistem\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="6a819a18d9891abd520efa6b9df02ea9a91a6cc6">
+        <dex dex="O:\AndroidProject\RainbowSistem\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_9c1718276c99fc035dbe1ff6d5245c61f41ea5bd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="O:\AndroidProject\RainbowSistem\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="O:\AndroidProject\RainbowSistem\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_0ec7cb6c9f85c1d0c2685652d49afd56d1e049da\classes.dex" />
+    </item>
+
+</items>
